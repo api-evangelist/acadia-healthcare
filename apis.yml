@@ -26,6 +26,10 @@ apis:
     description: >-
       The Acadia Healthcare API provides access to platform services and data for enterprise integration and automation.
 common:
+  - type: GitHubOrganization
+    url: https://github.com/acadiahealthcare
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/acadia-healthcare
   - type: Website
     url: https://www.acadiahealthcare.com
 maintainers:
