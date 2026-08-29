@@ -6,8 +6,8 @@ providerId: acadia-healthcare
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+method: searched
+modified: '2026-08-29'
 reconciled: false
 tags:
   - Behavioral Health
@@ -16,10 +16,22 @@ tags:
 description: Acadia Healthcare does not publish a developer-facing API or rate-limit documentation. As
   a clinical services provider, any system-to-system integrations (HL7, FHIR, payer EDI) are scoped through
   direct partner contracts rather than a public API portal.
+source: https://www.acadiahealthcare.com
 sources:
   - https://www.acadiahealthcare.com
-notes: No public rate-limit documentation. Reconciled flag is false because there is no published API
-  surface to capture limits from.
+notes: >-
+  Re-searched 2026-08-29. No public rate-limit documentation exists, because no public API reference
+  exists. No response headers could be observed: api.acadiahealthcare.com returns a bare HTTP 404 with
+  Content-Length 0 and no rate-limit headers on every anonymous path. limit_count is an honest zero.
+limit_count: 0
+evidence:
+  - url: https://api.acadiahealthcare.com/
+    status: 404
+    note: >-
+      Empty-body 404; response carries no X-RateLimit-*, RateLimit-*, or Retry-After header.
+  - url: https://developer.acadiahealthcare.com/
+    status: 0
+    note: NXDOMAIN — no developer portal to carry a limits page.
 responseCodes: {}
 limits: []
 policies:

@@ -1,0 +1,74 @@
+# Acadia Healthcare
+
+> Acadia Healthcare Company, Inc. is a Fortune 1000 behavioral healthcare provider that operates a
+> national network of inpatient psychiatric hospitals, specialty treatment facilities, residential
+> treatment centers, and outpatient clinics across the United States. It is a clinical services
+> operator, not a software or API company.
+
+<!--
+generated: 2026-08-29
+method: generated
+source: apis.yml + repo artifacts (no /llms.txt is served by the provider; https://www.acadiahealthcare.com/llms.txt returned HTTP 404 on 2026-08-29)
+-->
+
+## What an agent needs to know first
+
+Acadia Healthcare publishes **no public API, no developer portal, and no machine-readable contract**.
+As of 2026-08-29:
+
+- `https://developer.acadiahealthcare.com` — **NXDOMAIN**. There is no developer portal host.
+- `https://api.acadiahealthcare.com` — resolves by CNAME to `w5rrqr.usa-e2.cloudhub.io`
+  (MuleSoft CloudHub, US-East-2). Every anonymous path returns **HTTP 404 with an empty body**,
+  including `/openapi.json`, `/swagger.json`, `/api-docs`, `/docs`, and every `/.well-known/*` path.
+  A gateway is deployed; nothing on it is publicly reachable or documented.
+- No OpenAPI, AsyncAPI, GraphQL SDL, WSDL, `.proto`, MCP server, or A2A agent card exists on any
+  Acadia Healthcare host.
+- No `/llms.txt`, no `/.well-known/security.txt`, no `/.well-known/api-catalog`.
+
+Any system-to-system exchange Acadia participates in — HL7/FHIR with health systems, X12 EDI with
+payers, EHR interfaces — is arranged through direct contracts and is not published. Do not attempt
+to call `api.acadiahealthcare.com`; there is no public listener and no credential issuance path.
+
+## Company
+
+- Headquarters: Franklin, Tennessee, United States
+- Sector: behavioral health — acute inpatient psychiatric, specialty treatment (substance use
+  disorder), residential treatment, and outpatient community-based care (including comprehensive
+  treatment centers)
+- Listed: NASDAQ, ticker ACHC
+- Regulatory posture: HIPAA covered entity; publishes a patient Notice of Privacy Practices
+
+Not to be confused with **Acadia Pharmaceuticals (NASDAQ: ACAD)**, a separate and unrelated company.
+
+## Public surfaces
+
+- Website: https://www.acadiahealthcare.com
+- Newsroom / press releases: https://www.acadiahealthcare.com/about/news-media-events/
+- Investor relations: https://www.acadiahealthcare.com/investors/
+- Partnerships (health-system joint ventures): https://www.acadiahealthcare.com/about/partnerships/
+- Privacy practices (HIPAA NPP): https://www.acadiahealthcare.com/about/privacy-practices/
+- Online privacy policy: https://www.acadiahealthcare.com/about/privacy-practices/online-policy/
+- Corporate compliance / code of conduct: https://www.acadiahealthcare.com/about/corporate-compliance/
+- Contact: https://www.acadiahealthcare.com/about/contact/
+- GitHub organization: https://github.com/acadiahealthcare — one public repository, `npidb`
+  (a Go utility that upserts weekly CMS NPI registry updates into SQL Server; last release v0.1,
+  2017-10-18; unmaintained). It is not a client library for an Acadia API.
+- LinkedIn: https://www.linkedin.com/company/acadia-healthcare
+
+## Artifacts in this repository
+
+- `apis.yml` — APIs.json index for the provider
+- `well-known/acadia-healthcare-well-known.yml` — the full `/.well-known/` probe record (all 404)
+- `packages/acadia-healthcare-packages.yml` — registry search record and the one first-party repo
+- `conformance/acadia-healthcare-conformance.yml` — HIPAA covered-entity evidence; no contract-level standard
+- `security/acadia-healthcare-domain-security.yml` — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe
+- `plans/acadia-healthcare-plans-pricing.yml` — no published plans (plan_count: 0)
+- `rate-limits/acadia-healthcare-rate-limits.yml` — no published limits (limit_count: 0)
+- `finops/acadia-healthcare-finops.yml` — FOCUS-aligned scaffold; no billable API surface
+- `blogs/` — press releases pulled from the Acadia newsroom
+
+## Correction
+
+If Acadia Healthcare does publish a developer program or a machine-readable contract that this
+record misses, corrections go to kin@apievangelist.com or as an issue on
+https://github.com/api-evangelist/acadia-healthcare.

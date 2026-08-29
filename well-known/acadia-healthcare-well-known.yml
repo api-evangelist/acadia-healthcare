@@ -1,0 +1,93 @@
+generated: '2026-08-29'
+method: probed
+source: live HTTP probes of every apis.yml host on 2026-08-29
+provider: Acadia Healthcare
+providerId: acadia-healthcare
+description: >-
+  Record of the /.well-known/ probe against every host Acadia Healthcare names in apis.yml.
+  No well-known document is served on any host. www.acadiahealthcare.com is a WordPress site
+  whose 404 handler returns a 404 status with a full HTML error page for every unmatched path,
+  so none of these responses carries a document. api.acadiahealthcare.com is a MuleSoft CloudHub
+  gateway that answers a bare 404 with an empty body on every anonymous path.
+  No WellKnown or SecurityTxt pointer is emitted in apis.yml, because nothing was served.
+hosts:
+  - host: www.acadiahealthcare.com
+    note: WordPress corporate site behind CloudFront; unmatched paths return HTTP 404 with an HTML error page.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: api.acadiahealthcare.com
+    note: >-
+      Resolves by CNAME to w5rrqr.usa-e2.cloudhub.io (MuleSoft CloudHub, US-East-2). Every anonymous
+      path returns HTTP 404 with Content-Length 0 and no server banner — a deployed gateway with no
+      public listener, not a documented API.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: apps.acadiahealthcare.com
+    note: >-
+      Resolves (A 20.232.178.96, Azure) but does not complete a TLS/HTTP connection from the probe
+      host — curl returned 000 on every request. Recorded as unreachable, not as absent; one attempt
+      per path, no retries.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: null
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: null
+        file: null
+      - path: /.well-known/security.txt
+        status: null
+        file: null
+      - path: /.well-known/agent-card.json
+        status: null
+        file: null
+      - path: /.well-known/agent.json
+        status: null
+        file: null
+  - host: developer.acadiahealthcare.com
+    note: >-
+      NXDOMAIN. The developer portal host that apis.yml previously carried as humanURL does not exist
+      in DNS; the dead humanURL and its /docs Documentation pointer were removed in this pass.
+    documents: []
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

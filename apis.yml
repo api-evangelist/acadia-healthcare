@@ -29,34 +29,88 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/acadia-hea
 tags:
   - Behavioral Health
   - Mental Health
+  - Substance Use Treatment
+  - Healthcare Providers
+  - Hospitals
+  - Fortune 1000
 description: >-
-  Acadia Healthcare is a major US corporation and Fortune 1000 company. The Acadia Healthcare API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+  Acadia Healthcare Company, Inc. (NASDAQ: ACHC) is a Franklin, Tennessee-based Fortune 1000
+  behavioral healthcare provider operating a national network of acute inpatient psychiatric
+  hospitals, specialty substance use disorder treatment facilities, residential treatment centers,
+  and outpatient comprehensive treatment clinics across the United States. It is a clinical services
+  operator rather than a software company: as of August 2026 it publishes no developer portal, no API
+  reference, and no machine-readable contract of any kind. A MuleSoft CloudHub gateway is deployed at
+  api.acadiahealthcare.com, but every anonymous path on it returns an empty-body HTTP 404, and the
+  developer host previously recorded here (developer.acadiahealthcare.com) does not resolve. Not to
+  be confused with Acadia Pharmaceuticals (NASDAQ: ACAD), an unrelated company.
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 apis:
   - aid: acadia-healthcare:acadia-healthcare-api
-    name: Acadia Healthcare API
+    name: Acadia Healthcare API Gateway
     tags:
       - Behavioral Health
       - Mental Health
+      - Healthcare Providers
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.acadiahealthcare.com
-    humanURL: https://developer.acadiahealthcare.com
-    properties:
-      - url: https://developer.acadiahealthcare.com/docs
-        type: Documentation
+    humanURL: https://www.acadiahealthcare.com
     description: >-
-      The Acadia Healthcare API provides access to platform services and data for enterprise integration and automation.
+      An API gateway host operated by Acadia Healthcare, not a published API product. Probed
+      2026-08-29: api.acadiahealthcare.com resolves by CNAME to w5rrqr.usa-e2.cloudhub.io (MuleSoft
+      CloudHub, US-East-2) over TLS 1.3, and returns HTTP 404 with Content-Length 0 on every
+      anonymous path tried, including /openapi.json, /openapi.yaml, /swagger.json, /v1/openapi.json,
+      /api-docs, /docs, /redoc and every /.well-known/* path. No OpenAPI, AsyncAPI, GraphQL SDL,
+      WSDL, .proto, MCP server or A2A agent card is published on any Acadia Healthcare host, and
+      there is no developer portal — the humanURL is the corporate site because no API-facing human
+      page exists. Any HL7/FHIR or X12 exchange Acadia participates in is contracted directly and is
+      not published. This entry records a real, probed host; it does not assert a consumable API.
 common:
-  - type: DomainSecurity
-    url: security/acadia-healthcare-domain-security.yml
+  - type: Website
+    url: https://www.acadiahealthcare.com
+  - type: Blog
+    url: https://www.acadiahealthcare.com/about/news-media-events/
+  - type: Support
+    url: https://www.acadiahealthcare.com/about/contact/
+  - type: PrivacyPolicy
+    url: https://www.acadiahealthcare.com/about/privacy-practices/online-policy/
   - type: GitHubOrganization
     url: https://github.com/acadiahealthcare
   - type: LinkedIn
     url: https://www.linkedin.com/company/acadia-healthcare
-  - type: Website
-    url: https://www.acadiahealthcare.com
+  - type: DomainSecurity
+    url: security/acadia-healthcare-domain-security.yml
+  - type: Packages
+    url: packages/acadia-healthcare-packages.yml
+  - type: Conformance
+    url: conformance/acadia-healthcare-conformance.yml
+  - type: LLMsTxt
+    url: llms/acadia-healthcare-llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: minimal
+  artifacts_added: 4
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    Acadia Healthcare is a behavioral-health hospital operator with no software product to publish —
+    the developer host the catalog previously carried, developer.acadiahealthcare.com, is NXDOMAIN,
+    and the MuleSoft CloudHub gateway that is genuinely deployed at api.acadiahealthcare.com answers
+    every anonymous path, including /openapi.json and every /.well-known/ document, with an
+    empty-body HTTP 404.
+  evidence:
+    - url: https://developer.acadiahealthcare.com/
+      status: 0
+    - url: https://api.acadiahealthcare.com/openapi.json
+      status: 404
+    - url: https://api.acadiahealthcare.com/.well-known/agent-card.json
+      status: 404
+    - url: https://www.acadiahealthcare.com/llms.txt
+      status: 404
+  checked: '2026-08-29'

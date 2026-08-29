@@ -6,8 +6,8 @@ providerId: acadia-healthcare
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+method: searched
+modified: '2026-08-29'
 reconciled: false
 tags:
   - Behavioral Health
@@ -15,11 +15,26 @@ tags:
 description: Acadia Healthcare is a Fortune 1000 behavioral health services provider operating a network
   of treatment facilities across the United States. It is a clinical services company, not a commercial
   API platform. There is no public developer pricing page or self-service plan tier.
+source: https://www.acadiahealthcare.com
 sources:
   - https://www.acadiahealthcare.com
-notes: No public commercial API pricing. Any partner, payer, or referrer integrations are governed by
-  direct contracts and not published. Reconciled flag is false because there are no published plan entries
-  to map to API Commons Plans.
+notes: >-
+  Re-searched 2026-08-29. No public commercial API pricing exists. The corporate site has no /pricing,
+  /plans, or developer-pricing page; the developer host named in apis.yml (developer.acadiahealthcare.com)
+  is NXDOMAIN; and the API gateway host api.acadiahealthcare.com returns HTTP 404 with an empty body on
+  every anonymous path. Any partner, payer, or referrer integration is governed by a direct contract and
+  is not published. plan_count is an honest zero, not an unchecked field.
+plan_count: 0
+evidence:
+  - url: https://www.acadiahealthcare.com
+    status: 200
+    note: Corporate site; no pricing or plans page in navigation or footer.
+  - url: https://developer.acadiahealthcare.com/
+    status: 0
+    note: NXDOMAIN — host does not resolve.
+  - url: https://api.acadiahealthcare.com/
+    status: 404
+    note: MuleSoft CloudHub gateway; empty-body 404 on every anonymous path.
 plans: []
 maintainers:
   - FN: Kin Lane

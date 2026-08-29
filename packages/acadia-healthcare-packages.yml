@@ -1,0 +1,48 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  GitHub org api (https://api.github.com/orgs/acadiahealthcare/repos), npm registry, PyPI,
+  and proxy.golang.org, probed 2026-08-29
+provider: Acadia Healthcare
+providerId: acadia-healthcare
+description: >-
+  Acadia Healthcare publishes no client SDK for any API. The GitHub organization
+  github.com/acadiahealthcare exists and is first-party, but holds exactly one public repository —
+  an internal Go utility for loading the CMS NPI registry into SQL Server. It is not a client library
+  for an Acadia API, so no `SDKs` pointer is emitted in apis.yml; only the artifact-native `Packages`
+  pointer is wired. Searches of npm, PyPI and the Go module proxy returned nothing first-party.
+registries_searched:
+  - registry: npm
+    query: acadia-healthcare, acadiahealthcare
+    result: 404 on both — no first-party package
+  - registry: pypi
+    query: acadia-healthcare, acadiahealthcare
+    result: 404 on both — no first-party package
+  - registry: pkg.go.dev / proxy.golang.org
+    query: github.com/acadiahealthcare/npidb
+    result: HTTP 200 with an empty version list — the repo is not published as a Go module
+  - registry: github
+    query: orgs/acadiahealthcare/repos
+    result: 1 public repository (npidb)
+packages:
+  - name: npidb
+    official: true
+    sdk: false
+    registry: github
+    url: https://github.com/acadiahealthcare/npidb
+    language: Go
+    description: >-
+      "Upsert Weekly NPI Updates to a SQL Server Database" — a command-line utility that loads the
+      CMS National Provider Identifier weekly update files into SQL Server. An internal data-loading
+      tool, not a client for an Acadia Healthcare API.
+    version: v0.1
+    published: '2017-10-18'
+    license: null
+    note: >-
+      Single tagged release v0.1 (2017-10-18); last commit pushed 2017-10-26; no LICENSE file; not
+      published to any package registry, so `version`/`published` are read from the GitHub release
+      metadata rather than a registry metadata endpoint. Nine years without a commit — this is an
+      abandoned utility, and it is the whole of Acadia Healthcare's public code surface.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

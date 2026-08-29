@@ -1,0 +1,77 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://www.acadiahealthcare.com/about/privacy-practices/ and
+  https://www.acadiahealthcare.com/about/corporate-compliance/, fetched 2026-08-29
+provider: Acadia Healthcare
+providerId: acadia-healthcare
+description: >-
+  Standards and regulatory-regime conformance for Acadia Healthcare. Acadia is a US behavioral
+  healthcare provider operating inpatient and outpatient treatment facilities, so it is a HIPAA
+  covered entity by operation of law and publishes a Notice of Privacy Practices to that effect.
+  It publishes NO machine-readable API contract of any kind, so every contract-level conformance
+  assertion below is false — not because the provider fails a standard, but because there is no
+  contract in which a standard could be declared.
+domain_standard:
+  declared: false
+  standard: null
+  evidence: >-
+    No OpenAPI, AsyncAPI, GraphQL SDL, WSDL, or .proto is published on any Acadia Healthcare host,
+    so there is no contract location in which an HL7v2, FHIR, X12, or NCPDP signature could appear.
+    Acadia's clinical and payer integrations are almost certainly HL7/X12 over private channels, but
+    nothing published states that, and this pipeline does not assert a standard it cannot see.
+conformance:
+  - id: hipaa
+    conforms: true
+    evidence:
+      - type: published-notice
+        url: https://www.acadiahealthcare.com/about/privacy-practices/
+        status: 200
+        note: >-
+          Notice of Privacy Practices published for patients; the online privacy policy explicitly
+          refers protected-health-information handling to it. This establishes HIPAA covered-entity
+          status, not an audited API-security certification.
+  - id: fhir
+    conforms: false
+    evidence:
+      - type: probe
+        url: https://api.acadiahealthcare.com/
+        status: 404
+        note: No FHIR capability statement, metadata endpoint, or patient-access API is published.
+  - id: oauth2
+    conforms: false
+    evidence:
+      - type: probe
+        url: https://api.acadiahealthcare.com/.well-known/oauth-authorization-server
+        status: 404
+        note: No authorization-server metadata served on any host.
+  - id: oidc
+    conforms: false
+    evidence:
+      - type: probe
+        url: https://api.acadiahealthcare.com/.well-known/openid-configuration
+        status: 404
+        note: No OpenID Provider configuration served on any host.
+  - id: rfc9457
+    conforms: false
+    evidence:
+      - type: derived
+        url: null
+        status: null
+        note: No published contract, so no application/problem+json error envelope can be observed.
+  - id: rfc9116
+    conforms: false
+    evidence:
+      - type: probe
+        url: https://www.acadiahealthcare.com/.well-known/security.txt
+        status: 404
+        note: No security.txt on the corporate site or the API host.
+certifications_published: []
+note: >-
+  No `Compliance` pointer is emitted in apis.yml. The corporate-compliance page is a code-of-conduct
+  and ethics-hotline page — it names no certification, accreditation, or audit (no SOC 2, ISO 27001,
+  HITRUST, Joint Commission or CARF claim appears on it) — and crediting it as published compliance
+  would over-state what Acadia publishes.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
