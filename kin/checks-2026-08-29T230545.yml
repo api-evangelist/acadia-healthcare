@@ -1,25 +1,21 @@
 ---
 kin_checks:
   slug: acadia-healthcare
-  schema_version: 0.15.1
-  scored_at: '2026-08-28'
-  run_ts: 2026-08-28T221322
+  schema_version: 0.16.0
+  scored_at: '2026-08-29'
+  run_ts: 2026-08-29T230545
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.15.1.yml; counts below let you verify that.
+    in rubric/scoring-0.16.0.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 10
+    earned: 17
     partial: 2
-    missed: 81
+    missed: 74
     na: 37
   checks:
-  - id: tags_present
-    status: missed
   - id: multiple_apis
     status: missed
   - id: well_known_published
-    status: missed
-  - id: llms_txt_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -53,8 +49,6 @@ kin_checks:
     status: missed
   - id: vocabulary_published
     status: missed
-  - id: conformance_declared
-    status: missed
   - id: overlay_published
     status: missed
   - id: change_log_present
@@ -77,6 +71,8 @@ kin_checks:
     status: missed
   - id: portal_present
     status: missed
+  - id: documentation_present
+    status: missed
   - id: api_reference_present
     status: missed
   - id: getting_started_present
@@ -95,10 +91,6 @@ kin_checks:
     status: missed
   - id: agent_skill_present
     status: missed
-  - id: support_channel
-    status: missed
-  - id: blog_present
-    status: missed
   - id: plans_present
     status: missed
   - id: plans_multiple
@@ -108,8 +100,6 @@ kin_checks:
   - id: sign_up_present
     status: missed
   - id: terms_of_service
-    status: missed
-  - id: privacy_policy
     status: missed
   - id: compliance_published
     status: missed
@@ -123,11 +113,7 @@ kin_checks:
     status: missed
   - id: reg_terms_of_service
     status: missed
-  - id: reg_privacy_policy
-    status: missed
   - id: reg_compliance_published
-    status: missed
-  - id: reg_standards_conformance
     status: missed
   - id: reg_named_standard_conformance
     status: missed
