@@ -48,6 +48,7 @@ modified: '2026-08-29'
 specificationVersion: '0.23'
 apis:
   - aid: acadia-healthcare:acadia-healthcare-api
+    x-published: false
     name: Acadia Healthcare API Gateway
     tags:
       - Behavioral Health
