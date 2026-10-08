@@ -68,6 +68,12 @@ apis:
       page exists. Any HL7/FHIR or X12 exchange Acadia participates in is contracted directly and is
       not published. This entry records a real, probed host; it does not assert a consumable API.
 common:
+  - type: Plans
+    url: plans/acadia-healthcare-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/acadia-healthcare-rate-limits.yml
+  - type: FinOps
+    url: finops/acadia-healthcare-finops.yml
   - type: Website
     url: https://www.acadiahealthcare.com
   - type: Blog
